@@ -23,6 +23,13 @@ spec:
      containers:
      - name: nginx
        image: nginx:latest
+       livenessProbe:
+         exec:
+           command:
+           - cat
+           - /homework/index.html
+         initialDelaySeconds: 5
+         periodSeconds: 5
        lifecycle:
          preStop:
            exec:
