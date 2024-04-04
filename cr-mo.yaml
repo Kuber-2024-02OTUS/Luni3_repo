@@ -1,0 +1,8 @@
+kind: ClusterRole
+metadata:
+  name: monitoring-cr
+rules:
+  - nonResourceURLs:
+      - "/metrics"
+    verbs:
+      - get
