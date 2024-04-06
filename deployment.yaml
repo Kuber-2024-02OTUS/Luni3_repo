@@ -31,6 +31,12 @@ spec:
            - /homework/index.html
          initialDelaySeconds: 5
          periodSeconds: 5
+       readinessProbe:
+         httpGet:
+           path: /index.html
+           port: 8000
+         initialDelaySeconds: 5
+         periodSeconds: 5
        lifecycle:
          preStop:
            exec:
