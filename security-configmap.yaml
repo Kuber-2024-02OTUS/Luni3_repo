@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: script-cm
+  namespace: homework
+data:
+  script.sh:  |
+    #! /bin/bash
+    KUBEAPI=https://192.168.49.2:8443
+    SA=/var/run/secrets/kubernetes.io/serviceaccount
+    CACERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+    NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+    curl --cacert ${CACERT} --header "Authorization: Bearer ${TOKEN}" -X GET ${KUBEAPI}/metrics >  /homework/metrics.html
