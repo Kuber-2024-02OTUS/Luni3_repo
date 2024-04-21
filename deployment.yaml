@@ -20,6 +20,7 @@ spec:
       labels:
         app: nginx
     spec:
+     serviceAccountName: monitoring
      containers:
      - name: nginx
        image: nginx:latest
@@ -28,21 +29,35 @@ spec:
            command:
            - cat
            - /homework/index.html
-         initialDelaySeconds: 5
-         periodSeconds: 5
+         initialDelaySeconds: 30
+         periodSeconds: 30
+       readinessProbe:
+         httpGet:
+           path: /index.html
+           port: 8000
+         initialDelaySeconds: 30
+         periodSeconds: 30
        lifecycle:
+         postStart:
+           exec:
+             command: ["bin/sh", "/bin/script.sh"]
          preStop:
            exec:
              command: ["/bin/sh","-c","rm -rf /homework/index.html"]
        ports:
        - containerPort: 8000
        volumeMounts:
+       - name: script-sh
+         mountPath: /bin/script.sh
+         subPath: script.sh
        - name: workdir
          mountPath: /homework
        - name: nginx-conf
          mountPath: /etc/nginx/conf.d/default.conf
          subPath: nginx.conf
-  # These containers are run during pod initialization
+       - name:  random-cm
+         mountPath: /homework/conf/file
+         subPath: file
      initContainers:
      - name: init-demo
        image: busybox:1.28
@@ -56,10 +71,17 @@ spec:
          mountPath: "/init"
      dnsPolicy: Default
      volumes:
+     - name: script-sh
+       configMap:
+         name: script-cm
      - name: workdir
-       emptyDir: {}
+       persistentVolumeClaim:
+         claimName:  nginx-pvc
      - name: nginx-conf
        configMap:
          name: nginx-conf
+     - name: random-cm
+       configMap:
+         name: random-cm
      nodeSelector:
        homework: "true"
