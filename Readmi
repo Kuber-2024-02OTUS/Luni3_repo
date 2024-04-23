@@ -1,0 +1,77 @@
+Настройка сервисных аккаунтов и ограничение прав для них
+
+
+1)В namespace homework создать service account monitoring
+и дать ему доступ к эндпоинту /metrics вашего кластера
+
+скопировать проект использовать в кластере 
+kubectl apply -f sa-mo.yaml   создаем нужный sа
+
+далее для этого  са даем нужную кластер роль 
+kubectl apply -f cr-mo.yaml создаем  rolebinding
+
+ и по итогу   соединяем роль с са 
+kubectl apply -f  crb-mo.yaml   создаем clusterrolebinding
+
+
+2)Изменить манифест deployment из прошлых ДЗ так, чтобы
+поды запускались под service account monitoring
+
+kubectl apply -f delpoyment.yaml добавлен необходимый sa
+
+
+3)В namespace homework создать service account с именем
+cd и дать ему роль admin в рамках namespace homework
+
+ 
+kubectl apply -f sacd.yaml  создаем новый sa  c  именем cd 
+kubectl apply -f rolecd.yaml  создаем роль для него 
+kubectl apply -f  rbcd.yaml   и рольбиндинг для данного sa
+
+5) Сгенерировать для service account cd токен с временем
+действия 1 день и сохранить его в файл token
+
+kubectl apply -f secret.yaml  создаем секрет для sa cd 
+
+ kubectl create token  cd   -n homework  --duration 24h --bound-object-kind Secret --bound-object-name secret-sa-sample  > token    создаем токен  для sa cd  на 24 часа  привязываем его к   к секрету который создали 
+
+
+
+4) Создать kubeconfig для service account cd
+
+
+
+
+6)Модифицировать deployment из прошлых ДЗ так, чтобы в
+процессе запуска pod происходило обращение к
+эндпоинту /metrics вашего кластера (механика вызова не
+принципиальна), результат ответа сохранялся в файл
+metrics.html и содержимое этого файла можно было бы
+получить при обращении по адресу /metrics.html вашего
+сервиса
+
+
+kubectl apply -f security-configmap.yaml создаем  конфигмапу с скриптом внутри 
+kubectl apply -f depolyment.yaml 
+можно проверить зайти внутрь пода  в папке /homework/metrics.html будут сохранены метрики
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
