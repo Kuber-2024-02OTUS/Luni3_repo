@@ -1,0 +1,5 @@
+ kubectl debug -n default   nginx --image=busybox -ti  --target=nginx-distroless
+proc/1/root/etc/nginx # ls
+conf.d          fastcgi_params  koi-utf         koi-win         mime.types      modules         nginx.conf      scgi_params     uwsgi_params    win-utf
+/proc/1/root/etc/nginx # pwd
+/proc/1/root/etc/nginx
