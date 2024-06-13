@@ -1,0 +1,4 @@
+команда для ноды 
+kubectl  debug node/cl1vmt8d77ghvdn8rr0v-ujed -it --image=busybox
+посмотреть логи на ноде 
+cat /host/var/log/pods/default_node-debugger-cl1vmt8d77ghvdn8rr0v-ujed-4254n_59ba4144-aeda-43b8-a0e1-956e70b206df/debugger/0.log
