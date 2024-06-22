@@ -1,0 +1,10 @@
+root@master-1:/home/admin# kubectl get nodes -o wide
+NAME    STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE           KERNEL-VERSION     CONTAINER-RUNTIME
+node1   Ready    control-plane   17m   v1.29.5   10.128.0.28   <none>        Ubuntu 24.04 LTS   6.8.0-35-generic   containerd://1.7.16
+node2   Ready    control-plane   16m   v1.29.5   10.128.0.30   <none>        Ubuntu 24.04 LTS   6.8.0-35-generic   containerd://1.7.16
+node3   Ready    control-plane   16m   v1.29.5   10.128.0.19   <none>        Ubuntu 24.04 LTS   6.8.0-35-generic   containerd://1.7.16
+node4   Ready    <none>          15m   v1.29.5   10.128.0.9    <none>        Ubuntu 24.04 LTS   6.8.0-35-generic   containerd://1.7.16
+node5   Ready    <none>          15m   v1.29.5   10.128.0.39   <none>        Ubuntu 24.04 LTS   6.8.0-35-generic   containerd://1.7.16
+
+
+

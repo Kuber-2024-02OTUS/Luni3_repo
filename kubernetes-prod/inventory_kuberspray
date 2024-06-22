@@ -1,0 +1,47 @@
+all:
+  vars:
+    ansible_user: kuber
+    ansible_python_interpreter: /usr/bin/python3
+    become: true
+  hosts:
+    node1:
+      ansible_host: 10.128.0.28
+      ip: 10.128.0.28
+      access_ip: 10.128.0.28
+    node2:
+      ansible_host: 10.128.0.30
+      ip: 10.128.0.30
+      access_ip: 10.128.0.30
+    node3:
+      ansible_host: 10.128.0.19
+      ip: 10.128.0.19
+      access_ip: 10.128.0.19
+    node4:
+      ansible_host: 10.128.0.9
+      ip: 10.128.0.9
+      access_ip: 10.128.0.9
+    node5:
+      ansible_host: 10.128.0.39
+      ip: 10.128.0.39
+      access_ip: 10.128.0.39
+  children:
+    kube_control_plane:
+      hosts:
+        node1:
+        node2:
+        node3:
+    kube_node:
+      hosts:
+        node4:
+        node5:
+    etcd:
+      hosts:
+        node1:
+        node2:
+        node3:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+      hosts: {}
