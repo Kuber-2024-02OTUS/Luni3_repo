@@ -1,0 +1,27 @@
+yaml пода 
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-distroless
+    image:  kyos0109/nginx-distroless
+    securityContext:
+      capabilities:
+        add:
+        - SYS_PTRACE
+
+
+ команда для создания 
+kubectl debug -n default   nginx --image=quay.io/mwasher/crictl:0.0.1 -ti --target=nginx-distroless  -- /bin/sh
+
+
+
+
+Эфемерные контейнеры не могут подключится к процессам внутри  основного контейнера 
+Для корректной работы  strace необходиомд обавить  секурити контекст с капабили  - SYS_PTRACE
+но эфимерные контейнеры не работают в securityContext  по итогу мы получаем strace: attach: ptrace(PTRACE_SEIZE, 7): Operation not permitted
+securityContext:
+      capabilities:
+        add:
+        - SYS_PTRACE
