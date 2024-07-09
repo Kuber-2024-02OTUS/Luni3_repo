@@ -13,7 +13,7 @@ spec:
       - path: /homepage
         pathType: Prefix
         backend:
-          service
+          service:
             name: my-service
             port:
               number: 80
