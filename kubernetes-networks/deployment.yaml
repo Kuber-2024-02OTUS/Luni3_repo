@@ -20,7 +20,7 @@ spec:
       labels:
         app: nginx
     spec:
-     serviceAccountName: monitoring
+     serviceAccountName: homework
      containers:
      - name: nginx
        image: nginx:latest
