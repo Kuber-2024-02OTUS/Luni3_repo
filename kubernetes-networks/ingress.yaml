@@ -4,6 +4,7 @@ metadata:
   name: ingress
   namespace: homework
   annotations:
+    kubernetes.io/ingress.allow-http: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
@@ -11,8 +12,8 @@ spec:
     - host: "homework.otus"
       http:
         paths:
-          - path: /homepage(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /homepage
+            pathType: Prefix
             backend:
               service:
                 name: my-service
