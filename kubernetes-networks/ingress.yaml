@@ -8,7 +8,6 @@ metadata:
     kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: nginx
   rules:
     - host: "homework.otus"
       http:
