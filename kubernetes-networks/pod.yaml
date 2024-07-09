@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: homework
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    lifecycle:
+      preStop:
+        exec:
+          command: ["/bin/sh","-c","rm -rf /homework/index.html"]
+    ports:
+    - containerPort: 8000
+    volumeMounts:
+    - name: workdir
+      mountPath: /homework
+    - name: nginx-conf
+      mountPath: /etc/nginx/conf.d/default.conf
+      subPath: nginx.conf
+  # These containers are run during pod initialization
+  initContainers:
+  - name: init-demo
+    image: busybox:1.28
+    command:
+    - wget
+    - "-O"
+    - "/init/index.html"
+    - http://info.cern.ch
+    volumeMounts:
+    - name: workdir
+      mountPath: "/init"
+  dnsPolicy: Default
+  volumes:
+  - name: workdir
+    emptyDir: {}
+  - name: nginx-conf
+    configMap:
+      name: nginx-conf
