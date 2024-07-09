@@ -8,15 +8,15 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-      http:
-        paths:
-          - path: /homepage(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: my-service
-                port:
-                  number: 80
+  - http:
+      paths:
+        - path: /homepage(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: my-service
+              port:
+                number: 80
 status:
   loadBalancer:
     ingress:
