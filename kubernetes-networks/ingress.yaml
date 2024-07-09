@@ -1,16 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: test-ingress
-spec:
+  name: nginx-ingress
+  namespace: homework
+  annotations:
+    kubernetes.io/ingress.allow-http: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec: 
   rules:
   - http:
       paths:
-      - path: /testpath
+      - path: /homepage
+        pathType: Prefix
         backend:
-          serviceName: my-service
-          servicePort: 80
+          service
+            name: my-service
+            port:
+              number: 80
 status:
   loadBalancer:
     ingress:
-    - hostname: placeholder
+    - hostname: "homework.otus"
