@@ -5,6 +5,8 @@ metadata:
   namespace: homework
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    kubernetes.io/ingress.allow-http: "true"
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
     - host: "homework.otus"
