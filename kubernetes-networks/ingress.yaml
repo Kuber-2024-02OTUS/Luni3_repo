@@ -8,7 +8,6 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: homework.otus
       http:
         paths:
           - path: /homepage(/|$)(.*)
@@ -21,4 +20,4 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - {}
+    - hostname:  homework.otus
