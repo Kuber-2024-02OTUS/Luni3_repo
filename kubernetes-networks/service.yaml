@@ -4,7 +4,7 @@ metadata:
   name: my-service
   namespace: homework
 spec:
-  type: LoadBalancer
+  type: ClusterIp
   selector:
     app:  nginx
   ports:
