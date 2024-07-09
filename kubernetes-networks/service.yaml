@@ -4,7 +4,7 @@ metadata:
   name: my-service
   namespace: homework
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app:  nginx
   ports:
