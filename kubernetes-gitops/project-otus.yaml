@@ -1,0 +1,8 @@
+clusterResourceWhitelist:
+- group: '*'
+  kind: '*'
+destinations:
+- namespace: '*'
+  server: https://kubernetes.default.svc
+sourceRepos:
+- https://github.com/Kuber-2024-02OTUS/Luni3_repo
