@@ -1,0 +1,10 @@
+destination:
+  namespace: homework
+  server: https://kubernetes.default.svc
+project: otus
+source:
+  directory:
+    jsonnet: {}
+    recurse: true
+  path: kubernetes-networks
+  repoURL: https://github.com/Kuber-2024-02OTUS/Luni3_repo
