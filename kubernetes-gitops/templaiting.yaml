@@ -1,0 +1,15 @@
+destination:
+  namespace: homeworkhelm
+  server: https://kubernetes.default.svc
+project: otus
+source:
+  helm:
+    parameters:
+    - name: replicaCount
+      value: "3"
+  path: kubernetes-templating/nginx_helm
+  repoURL: https://github.com/Kuber-2024-02OTUS/Luni3_repo
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
