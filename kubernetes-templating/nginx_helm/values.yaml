@@ -74,20 +74,10 @@ resources: {}
 
 livenessProbe:
   enabled: true
-  exec:
-    command:
-    - cat
-    - /homework/index.html
-  initialDelaySeconds: 30
-  periodSeconds: 30
 
 readinessProbe:
   enabled: true
-  httpGet:
-    path: /index.html
-    port: 8000
-  initialDelaySeconds: 30
-  periodSeconds: 30    
+ 
 
 lifecycle:
   postStart:
