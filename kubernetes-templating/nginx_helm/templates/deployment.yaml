@@ -46,8 +46,8 @@ spec:
               command:
               - cat
               - /homework/index.html
-            initialDelaySeconds: 10
-            periodSeconds: 10
+            initialDelaySeconds: 5
+            periodSeconds: 5
           {{- end }}
         {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
