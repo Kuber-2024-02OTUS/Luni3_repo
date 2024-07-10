@@ -1,0 +1,13 @@
+broker:
+  replicaCount: 5
+image:
+  tag: 3.5.2
+listeners:
+  client:
+    protocol: SASL_PLAINTEXT
+  controller:
+    protocol: SASL_PLAINTEXT
+  interbroker:
+    protocol: SASL_PLAINTEXT
+  external:
+    protocol: SASL_PLAINTEXT
