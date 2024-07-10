@@ -80,9 +80,6 @@ readinessProbe:
  
 
 lifecycle:
-  postStart:
-    exec:
-      command: ["bin/sh", "/bin/script.sh"]
   preStop:
     exec:
       command: ["/bin/sh","-c","rm -rf /homework/index.html"]      
