@@ -1,10 +1,18 @@
-destination:
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
   namespace: homework
-  server: https://kubernetes.default.svc
-project: otus
-source:
-  directory:
-    jsonnet: {}
-    recurse: true
-  path: kubernetes-networks
-  repoURL: https://github.com/Kuber-2024-02OTUS/Luni3_repo
+spec:
+  project: otus
+  source:
+    repoURL: https://github.com/Kuber-2024-02OTUS/Luni3_repo
+    targetRevision: HEAD
+    path: kubernetes-networks
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homework
+
+
+
+
