@@ -46,14 +46,16 @@ spec:
               command:
               - cat
               - /homework/index.html
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 20
+            periodSeconds: 20
           {{- end }}
         {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
             httpGet:
               path: /index.html
               port: 8000
+            initialDelaySeconds: 20
+            periodSeconds: 20
           {{- end }}
           lifecycle:
             {{- toYaml .Values.lifecycle | nindent 12 }}
