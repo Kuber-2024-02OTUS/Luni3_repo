@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name:  deploy-class
   annotations:
-    storageclass.kubernetes.io/is-default-class: "false"
-provisioner: k8s.io/minikube-hostpath
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: disk-csi-driver.mks.ycloud.io
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
