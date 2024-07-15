@@ -1,0 +1,30 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-helm
+spec:
+  project: otus
+  source:
+    repoURL: https://github.com/Kuber-2024-02OTUS/Luni3_repo
+    targetRevision: HEAD
+    path: kubernetes-templating/nginx_helm
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homeworkhelm
+  source:
+  helm:
+    parameters:
+    - name: replicaCount
+      value: "3"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+
+
+
+
+
+

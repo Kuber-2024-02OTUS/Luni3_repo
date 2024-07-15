@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+spec:
+  project: otus
+  source:
+    repoURL: https://github.com/Kuber-2024-02OTUS/Luni3_repo
+    targetRevision: HEAD
+    path: kubernetes-networks
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homework
+
+
+
+
