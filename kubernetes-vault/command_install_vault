@@ -1,0 +1,1 @@
+helm install  vault  vault-helm-main   --namespace  vault   --create-namespace
