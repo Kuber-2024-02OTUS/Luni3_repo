@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: custom-roles
+rules:
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["create",  "delete"]
+- apiGroups: [""]
+  resources: ["persistentvolumes"]
+  verbs: ["create",  "delete"]
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  verbs: ["create",  "delete"]
+- apiGroups: ["otus.homework"]
+  resources: ["MySQL"]
+  verbs: ["get", "list", "watch"]
