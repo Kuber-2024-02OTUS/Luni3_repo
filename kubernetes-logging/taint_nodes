@@ -1,0 +1,9 @@
+kubectl get node -o wide  --show-labels
+NAME                        STATUS   ROLES    AGE   VERSION   INTERNAL-IP   EXTERNAL-IP       OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME     LABELS
+cl1vmt8d77ghvdn8rr0v-ufar   Ready    <none>   40d   v1.26.2   10.128.0.6    178.154.228.243   Ubuntu 20.04.6 LTS   5.4.0-174-generic   containerd://1.6.28   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=standard-v3,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/zone=ru-central1-a,kubernetes.io/arch=amd64,kubernetes.io/hostname=cl1vmt8d77ghvdn8rr0v-ufar,kubernetes.io/os=linux,node.kubernetes.io/instance-type=standard-v3,node.kubernetes.io/kube-proxy-ds-ready=true,node.kubernetes.io/masq-agent-ds-ready=true,node.kubernetes.io/node-problem-detector-ds-ready=true,node=infra,topology.kubernetes.io/zone=ru-central1-a,yandex.cloud/node-group-id=cat4evjhsldqmd14nr3b,yandex.cloud/pci-topology=k8s,yandex.cloud/preemptible=false
+cl1vmt8d77ghvdn8rr0v-ujed   Ready    <none>   40d   v1.26.2   10.128.0.8    178.154.228.210   Ubuntu 20.04.6 LTS   5.4.0-174-generic   containerd://1.6.28   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=standard-v3,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/zone=ru-central1-a,kubernetes.io/arch=amd64,kubernetes.io/hostname=cl1vmt8d77ghvdn8rr0v-ujed,kubernetes.io/os=linux,node.kubernetes.io/instance-type=standard-v3,node.kubernetes.io/kube-proxy-ds-ready=true,node.kubernetes.io/masq-agent-ds-ready=true,node.kubernetes.io/node-problem-detector-ds-ready=true,topology.kubernetes.io/zone=ru-central1-a,yandex.cloud/node-group-id=cat4evjhsldqmd14nr3b,yandex.cloud/pci-topology=k8s,yandex.cloud/preemptible=false
+
+root@admin1:/home/admin1# kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints
+NAME                        TAINTS
+cl1vmt8d77ghvdn8rr0v-ufar   [map[effect:NoSchedule key:node-role value:infra]]
+cl1vmt8d77ghvdn8rr0v-ujed   <none>
